@@ -103,6 +103,14 @@
 
             var distanceNumber = parseFloat(content);
 
+            if (36 < distanceNumber 50) {
+                content = "empty";
+            } else if (31 < distanceNumber < 35 ) {
+                content = "halffilled";
+            } else if (distanceNumber < 30) {
+                content = "filled";
+            }
+
             // Update the content based on your logic
             // For now, I'll just display the distance value
             statusContentElement.innerHTML = "Distance Status: " + content;

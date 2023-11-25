@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('background.jpeg');
+            background-size: 1566px 744px;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: "";
+            background-image: url('background.jpeg');
+            background-size: cover;
+            filter: blur(1.5px);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .section {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 400px;
+        }
+
+        h1 {
+            font-family: 'Young Serif';
+            font-size: 33px;
+            text-shadow: 2px 2px #0000007b;
+        }
+
+        h2 {
+            font-family: 'Montserrat';
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #error-message {
+            color: red;
+        }
+
+         #displayValue {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="section">
+            <h1>Paper Detection Count</h1>
+            <p id="paperCount"><iframe width="350" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2322657/widgets/756226"></iframe></p>
+        </div>
+        <div class="section">
+            <h1>Ultrasonic Distance Measure</h1>
+            <p id="distanceMeasure"><iframe width="350" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2322657/widgets/756227"></iframe></p>
+            <span id="displayValue" style="outline: rgb(112, 128, 144) solid 0.5px;">4.0</span>
+            <p id="statusContent"></p>
+
+            
+        </div>
+        <div class="a">
+        <div class="section">
+            <h1>Paper Detection Count</h1>
+            <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2322657/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+
+        </div>
+
+            <div class="b">
+        <div class="section">
+            <h1>Paper Detection Count</h1>
+            <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2322657/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+
+
+        </div>
+    </div>
+
+    <script>
+
+        function updateDistanceContent() {
+            var distanceMeasureElement = document.getElementById("displayValue");
+            var statusContentElement = document.getElementById("statusContent");
+            var content = distanceMeasureElement.innerText.trim(); 
+            
+
+            var distanceNumber = parseFloat(content);
+            
+        // Function to update the content based on distance values
+        function updateDistanceContent(distance) {
+            var distanceMeasureElement = document.getElementById("distanceMeasure");
+            var content = "";
+
+            if ( 36< distance < 50) {
+                content = "empty";
+            } else if (31<distance<=35) {
+                content = "half-filled";
+            } else if (distance < 31) {
+                content = "filled";
+            }
+
+            distanceMeasureElement.innerHTML = content;
+        }
+
+        // Assuming you have a way to get the distance value from your sensor/Thingspeak
+        // Replace the following line with your actual code to get the distance value
+        var distanceValue = document.getElementById("displayValue").innerText;
+
+        statusContentElement.innerHTML = "Distance Status: " + content;
+        
+        // Call the function to update the content based on the distance value
+       window.onload = function() {
+            updateDistanceContent();
+        };
+
+     document.addEventListener("keydown", function (event) {
+    console.log("Key pressed:", event.key);
+
+    if (event.key === "Enter") {
+        redirectToThirdPage();
+    }
+    </script>
+</body>
+
+</html>
+
+

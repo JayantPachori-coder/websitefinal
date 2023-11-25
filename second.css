@@ -1,0 +1,53 @@
+/* Reset some default styles and apply background to the body */
+body {
+
+    background-image: url(background.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    background-color: black; /* Set your desired background color */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style the header container */
+.header {
+    background-color: rgba(37, 36, 36, 0.8); /* Transparent black */
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Style the header text */
+h1 {
+    color: rgb(244, 244, 244); /* Set text color to contrast with the background */
+    margin: 0;
+}
+
+h2{
+
+    color: black;
+    margin: 0.5;
+    
+}
+
+.main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.graph {
+    text-align: center;
+    background-color: rgb(255, 255, 255, 0.8);
+    
+    margin: 20px;
+    width: 550px;
+    height: 380px;
+    box-shadow: 5px 5px rgb(48, 48, 48);
+
+
+}
